@@ -17,3 +17,26 @@ This is my abstract
 
 This is my analysis after I have committed.
 
+# Code
+```{r}
+library(tidyverse)
+library(gapminder)
+data <- gapminder_unfiltered
+```
+
+```{r}
+data %>%
+  group_by(year) %>% 
+  filter(lifeExp == max(lifeExp)) %>% 
+  ungroup() %>% 
+  select(year, country, lifeExp) %>% 
+  arrange(year) -> summarydata
+
+summarydata %>% 
+  group_by(country) %>% 
+  count() %>% 
+  arrange(n)
+```
+
+
+
